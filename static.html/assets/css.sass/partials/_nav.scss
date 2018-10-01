@@ -5,6 +5,16 @@
   .sp-ico-menu{
     display: none;
   }
+
+  .twenty_mitutes_logo{
+    width: 240px;
+    height: auto;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
   #category-nav{
     width: 240px;
     height: 100%;
@@ -36,7 +46,7 @@
         text-decoration: none;
     }
     .scroller{
-      padding:60px 20px;
+      padding:0px 0px 20px 0px;
     }
     .category-list{
       margin-bottom: 30px;

@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-
-
     <div id="twentyminutesbnr-archvie">
 
       <?php
@@ -20,7 +18,8 @@
 
       $args = array(
       'post_type' => 'twentyminutesbnr' , //投稿タイプ名
-      'post_status' => 'publish'
+      'post_status' => 'publish',
+      'posts_per_page' => '-1',
       );
       if ($year) {
       $start_date = $year.'/1/1';
@@ -40,13 +39,19 @@
       $terms = get_the_terms($query->ID, 'bnr_theme');
 
       foreach((array)$terms as $term) {
+
         $link = get_term_link($term, 'bnr_theme');
+        // エラーなら次のタームへ進む。
+         if ( is_wp_error( $link ) ) {
+             continue;
+         }
         $str_grep = preg_replace('/(\/twentyminutesbnr)/', '', $link);
+
       }
       ?>
 
-      <?php if (get_field('author') === "questions"): ?>
 
+      <?php if (get_field('author') === "questions"): ?>
         <div class="grid-item">
 
           <a class="thumb_img" href="<?php echo $str_grep ?>">
